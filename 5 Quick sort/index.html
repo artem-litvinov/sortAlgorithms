@@ -32,15 +32,15 @@
             return;
         }
 
-        var array = [3, 7, 4, 4, 6, 5, 8];
+        var array = [3, 7, 4, 4, 6, 5, 9];
 
         alert(array);
 
         
 
-        alert(quickSort(array));
+        alert(QuickSort(array));
 
-        function quickSort(arr) {
+        function QuickSort(arr) {
             if (arr.length == 0) return [];
             var a = [],
                 b = [],
@@ -49,7 +49,7 @@
                 if (arr[i] < p) a[a.length] = arr[i];
                 else b[b.length] = arr[i];
             }
-            return quickSort(a).concat(p, quickSort(b));
+            return QuickSort(a).concat(p, QuickSort(b));
         }
 
     </script>
