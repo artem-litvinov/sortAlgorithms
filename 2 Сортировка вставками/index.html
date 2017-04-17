@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+
+    <link rel="stylesheet" href="style.css">
+    <script src="js/js.js"></script>
+
+</head>
+
+<body>
+
+    <script>
+        Number.prototype.compareTo = function (num) {
+            if (this > num) {
+                return 1;
+            }
+            if (this < num) {
+                return -1;
+            }
+            return 0;
+        }
+
+        function swap(arr, left, right) {
+            if (left != right) {
+                var temp = arr[left];
+                arr[left] = arr[right];
+                arr[right] = temp;
+            }
+            return;
+        }
+
+        var array = [12, 3, 7, 4, 4, 6, 5, 8];
+
+        alert(array);
+
+        insSort(array);
+
+        alert(array);
+
+        function insertionSort(arr) {
+            var sortedRangeIndex = 1;
+
+            while (sortedRangeIndex < arr.length) {
+                if (arr[sortedRangeIndex].compareTo(arr[sortedRangeIndex - 1]) < 0) {
+                    var insertIndex = findInsertionIndex(arr, arr[sortedRangeIndex]);
+                    insert(arr, insertIndex, sortedRangeIndex);
+                }
+
+                sortedRangeIndex++;
+            }
+            return arr;
+        }
+
+        function findInsertionIndex(arr, valueToInsert) {
+            for (var i = 0; i < arr.length; i++) {
+                if (arr[i].compareTo(valueToInsert) > 0) {
+                    return i;
+                }
+            }
+        }
+
+        function insert(arr, indexInsertingAt, indexInsertingFrom) {
+            var temp = arr[indexInsertingAt];
+
+            arr[indexInsertingAt] = arr[indexInsertingFrom];
+
+            for (var current = indexInsertingFrom; current > indexInsertingAt; current--) {
+                arr[current] = arr[current - 1];
+            }
+
+            arr[indexInsertingAt + 1] = temp;
+
+            return;
+        }
+
+        function insSort(arr) {
+            
+            var length = arr.length;
+            for (var i = 1; i < arr.length; i++) {
+                
+                var temp = arr[i];
+                
+                for (j = i - 1; j >= 0 && arr[j] > temp; j--) {
+                    arr[j + 1] = arr[j];
+                }
+                
+                arr[j + 1] = temp;
+            }
+            return arr;
+        }
+    </script>
+</body>
+
+</html>

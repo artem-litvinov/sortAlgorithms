@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+
+    <link rel="stylesheet" href="style.css">
+    <script src="js/js.js"></script>
+
+</head>
+
+<body>
+
+    <script>
+        Number.prototype.compareTo = function (num) {
+            if (this > num) {
+                return 1;
+            }
+            if (this < num) {
+                return -1;
+            }
+            return 0;
+        }
+
+        function swap(arr, left, right) {
+            if (left != right) {
+                var temp = arr[left];
+                arr[left] = arr[right];
+                arr[right] = temp;
+            }
+            return;
+        }
+
+        var array = [3, 7, 4, 4, 6, 5, 8];
+
+        alert(array);
+
+        
+
+        alert(quickSort(array));
+
+        function quickSort(arr) {
+            if (arr.length == 0) return [];
+            var a = [],
+                b = [],
+                p = arr[0];
+            for (var i = 1; i < arr.length; i++) {
+                if (arr[i] < p) a[a.length] = arr[i];
+                else b[b.length] = arr[i];
+            }
+            return quickSort(a).concat(p, quickSort(b));
+        }
+
+    </script>
+</body>
+
+</html>

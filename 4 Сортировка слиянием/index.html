@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+
+    <link rel="stylesheet" href="style.css">
+    <script src="js/js.js"></script>
+
+</head>
+
+<body>
+
+    <script>
+        Number.prototype.compareTo = function (num) {
+            if (this > num) {
+                return 1;
+            }
+            if (this < num) {
+                return -1;
+            }
+            return 0;
+        }
+
+        function swap(arr, left, right) {
+            if (left != right) {
+                var temp = arr[left];
+                arr[left] = arr[right];
+                arr[right] = temp;
+            }
+            return;
+        }
+
+        var array = [3, 7, 4, 4, 6, 5, 8];
+
+        alert(array);
+
+        mergeSort(array);
+
+        alert(array);
+
+        function mergeSort(arr) {
+            if (arr.length <= 1) {
+                return;
+            }
+
+            var length = arr.length;
+
+            if ((length % 2) != 0) length += 1;
+            var leftSize = length / 2;
+
+            var left = arr.slice(0, leftSize);
+            var right = arr.slice(leftSize);
+
+            mergeSort(left);
+            mergeSort(right);
+
+            merge(arr, left, right);
+        }
+
+        function merge(arr, left, right) {
+            var leftIndex = 0,
+                rightIndex = 0,
+                targetIndex = 0,
+                remaining = left.length + right.length;
+
+            while (remaining > 0) {
+                if (leftIndex >= left.length) {
+                    arr[targetIndex] = right[rightIndex++];
+                } else if (rightIndex >= right.length) {
+                    arr[targetIndex] = left[leftIndex++];
+                } else if (left[leftIndex].compareTo(right[rightIndex]) < 0) {
+                    arr[targetIndex] = left[leftIndex++];
+                } else {
+                    arr[targetIndex] = right[rightIndex++]
+                }
+                
+                targetIndex++;
+                remaining--;
+            }
+        }
+    </script>
+</body>
+
+</html>
